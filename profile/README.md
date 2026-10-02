@@ -14,6 +14,15 @@ Open jobs from company career pages hirly reads directly, newest first. Each lis
 
 <!-- lists:start -->
 - [New Grad Software Engineer Jobs](https://github.com/Hirly-Me/New-Grad-Software-Engineer-Jobs) — Open software engineering jobs whose title asks for a new graduate, entry-level or junior engineer.
+- [Tech Internships 2027](https://github.com/Hirly-Me/Tech-Internships-2027) — Open software, data, AI, security, product and design internships whose title names 2027.
+- [Remote Software Engineer Jobs](https://github.com/Hirly-Me/Remote-Software-Engineer-Jobs) — Open software engineering jobs whose title or location says the role is remote.
+- [AI &amp; ML Engineer Jobs](https://github.com/Hirly-Me/AI-ML-Engineer-Jobs) — Open engineering jobs whose title names AI or machine learning.
+- [Data Science Jobs](https://github.com/Hirly-Me/Data-Science-Jobs) — Open data scientist and data science jobs.
+- [DevOps &amp; SRE Jobs](https://github.com/Hirly-Me/DevOps-SRE-Jobs) — Open DevOps, site reliability, platform and cloud infrastructure engineering jobs.
+- [Product Manager Jobs](https://github.com/Hirly-Me/Product-Manager-Jobs) — Open product manager and product owner jobs.
+- [Cybersecurity Jobs](https://github.com/Hirly-Me/Cybersecurity-Jobs) — Open cybersecurity jobs: security engineering, analysis, operations and architecture.
+- [Software Jobs in India](https://github.com/Hirly-Me/Software-Jobs-India) — Open software engineering and data jobs located in India.
+- [Tech Jobs in Europe](https://github.com/Hirly-Me/Tech-Jobs-Europe) — Open software engineering and data jobs located in the EU, the UK, Switzerland or Norway.
 <!-- lists:end -->
 
 The code that renders the lists is in [Hirly-Me/.github](https://github.com/Hirly-Me/.github) (MIT). The job postings belong to the employers who published them.
