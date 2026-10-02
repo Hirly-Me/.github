@@ -1,0 +1,72 @@
+# Reusable workflow: renders one hirly job list into the calling repository's
+# README.md and commits it when it changed.
+#
+# Called from each list repository (see templates/list-repo). It needs no
+# secrets: the list is public JSON at hirly.me, and the commit uses the
+# caller's own GITHUB_TOKEN, which the caller grants `contents: write`.
+#
+# When the list cannot be read the README is left untouched and the job
+# fails, so a stale list is visible in the Actions tab instead of an empty
+# table being published. The one exception is before the endpoint has
+# launched (its index answers 404 and the README has never been rendered from
+# it): that run is skipped with a notice.
+name: Update job list
+
+on:
+  workflow_call:
+    inputs:
+      slug:
+        description: The list's slug, as in hirly.me/api/job-lists/<slug>.json
+        required: true
+        type: string
+      endpoint:
+        description: Origin that serves /api/job-lists
+        required: false
+        type: string
+        default: https://hirly.me
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    name: Render README
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    concurrency:
+      group: update-job-list-${{ github.repository }}
+      cancel-in-progress: false
+    steps:
+      - name: Check out the list repository
+        uses: actions/checkout@v7
+
+      - name: Check out the renderer
+        uses: actions/checkout@v7
+        with:
+          repository: Hirly-Me/.github
+          ref: main
+          path: .hirly-tooling
+          sparse-checkout: scripts
+          persist-credentials: false
+
+      - name: Render the list
+        id: render
+        env:
+          SLUG: ${{ inputs.slug }}
+          ENDPOINT: ${{ inputs.endpoint }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          node --version
+          node .hirly-tooling/scripts/render-job-list.mjs \
+            --slug "$SLUG" --endpoint "$ENDPOINT" --out README.md --scheduled
+
+      - name: Commit the README
+        if: steps.render.outputs.status == 'changed'
+        env:
+          TOTAL: ${{ steps.render.outputs.total }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "chore: update job list (${TOTAL} open jobs)"
+          git push

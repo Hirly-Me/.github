@@ -1,0 +1,20 @@
+name: Test
+
+on:
+  push:
+    branches: [main]
+    paths: ['scripts/**', '.github/workflows/test.yml']
+  pull_request:
+    paths: ['scripts/**', '.github/workflows/test.yml']
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+      - run: node --version
+      - run: node --test scripts/render-job-list.test.mjs scripts/render-profile.test.mjs

@@ -1,0 +1,32 @@
+# Keeps the organisation profile's "Job lists" section in step with the list
+# repositories that exist. Skips with a notice until hirly.me/api/job-lists.json
+# is live.
+name: Update profile
+
+on:
+  schedule:
+    - cron: '57 6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+      - name: Render the list section
+        id: render
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node scripts/render-profile.mjs
+      - name: Commit the profile
+        if: steps.render.outputs.status == 'changed'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add profile/README.md
+          git commit -m "chore: update the job lists on the profile"
+          git push

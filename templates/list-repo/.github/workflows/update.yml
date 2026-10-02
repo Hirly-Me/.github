@@ -1,0 +1,17 @@
+# Renders this repository's README from hirly's public job-list JSON, once a
+# day. The work is done by the reusable workflow in Hirly-Me/.github.
+name: Update job list
+
+on:
+  schedule:
+    - cron: '__CRON__'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    uses: Hirly-Me/.github/.github/workflows/update-job-list.yml@main
+    with:
+      slug: __SLUG__

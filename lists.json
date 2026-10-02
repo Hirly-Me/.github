@@ -1,0 +1,17 @@
+{
+  "comment": "Per-repository settings for the job-list repositories. The lists themselves (titles, descriptions, filters) are defined in hirly's codebase and published at https://hirly.me/api/job-lists.json; this file only adds what GitHub needs: when each repository's daily Action runs (UTC, staggered) and its topics.",
+  "homepage": "https://hirly.me",
+  "commonTopics": ["jobs", "job-search", "job-board", "hiring", "careers", "hirly"],
+  "lists": {
+    "new-grad-software-engineer-jobs": { "cron": "7 6 * * *", "topics": ["new-grad", "new-grad-jobs", "software-engineering", "entry-level", "university"] },
+    "tech-internships-2027": { "cron": "12 6 * * *", "topics": ["internships", "internship", "summer-2027", "software-engineering", "university"] },
+    "remote-software-engineer-jobs": { "cron": "17 6 * * *", "topics": ["remote-jobs", "remote-work", "software-engineering", "developer-jobs"] },
+    "ai-ml-engineer-jobs": { "cron": "22 6 * * *", "topics": ["machine-learning", "artificial-intelligence", "ai-jobs", "ml-engineer"] },
+    "data-science-jobs": { "cron": "27 6 * * *", "topics": ["data-science", "data-scientist", "analytics"] },
+    "devops-sre-jobs": { "cron": "32 6 * * *", "topics": ["devops", "sre", "platform-engineering", "cloud"] },
+    "product-manager-jobs": { "cron": "37 6 * * *", "topics": ["product-management", "product-manager"] },
+    "cybersecurity-jobs": { "cron": "42 6 * * *", "topics": ["cybersecurity", "infosec", "security"] },
+    "software-jobs-india": { "cron": "47 6 * * *", "topics": ["india", "software-engineering", "developer-jobs", "bangalore"] },
+    "tech-jobs-europe": { "cron": "52 6 * * *", "topics": ["europe", "software-engineering", "developer-jobs", "uk-jobs"] }
+  }
+}
