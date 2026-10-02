@@ -6,6 +6,7 @@
 - **Job board** — [hirly.me/jobs](https://hirly.me/jobs?utm_source=github&utm_medium=profile&utm_campaign=org-profile)
 - **hirly in your AI assistant** — [hirly.me/ai-assistants](https://hirly.me/ai-assistants?utm_source=github&utm_medium=profile&utm_campaign=org-profile)
 - **MCP server** — `https://mcp.hirly.me/mcp` · [setup and tool list](https://github.com/Hirly-Me/hirly-mcp)
+- **LinkedIn** — [hirly](https://www.linkedin.com/company/hirly-me)
 - **Founder on X** — [@thakur_g](https://x.com/thakur_g)
 
 ## Job lists
